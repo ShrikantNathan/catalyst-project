@@ -1,0 +1,31 @@
+{% include "Base.html" %}
+<div class="container">
+    <a href={% url "add-user" %} class="btn btn-success mt-2">Add User</a>
+<table class="table mt-4">
+<thead class="bg-dark text-white">
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email Address</th>
+    <th>Status</th>
+    <th colspan=3>Actions</th>
+</thead>
+<tbody>
+{% for user in Users %}
+<tr>
+<td>{{ user.first_name }}</td>
+<td>{{ user.last_name }}</td>
+<td>{{ user.email_address }}</td>
+<td>
+    {% if user.status %}Active {% else %} Inactive {% endif %}
+    {% comment %} {{ user.status }}</td> {% endcomment %}
+<td>
+    <a href={% url "user-detail" user.pk %} class="btn btn-primary">Detail</a>
+    <a href={% url "edit-user" user.pk %} class="btn btn-warning">Edit</a>
+    <a href={% url "delete-user" user.pk %} class="btn btn-danger">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% include "Base-Ends.html" %}

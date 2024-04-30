@@ -1,0 +1,13 @@
+{% include "Base.html" %}
+<div class="container mt-3">
+<h2 class="text-dark">User {{ user.first_name.capitalize }} {{ user.last_name.capitalize }}'s Detail</h2>
+
+<div class="col-8">
+<strong>Full name:</strong> <p>{{ user.first_name.capitalize }} {{ user.last_name.capitalize }}</p>
+<strong>Email address:</strong> <p>{{ user.email_address }}</p>
+<strong>Status</strong> <p>{% if user.status %}Active {% else %}Inactive {% endif %}</p>
+</div>
+<a href={% url "user-list" %} class="btn btn-primary">Back to Users</a>
+</div>
+
+{% include "Base-Ends.html" %}
